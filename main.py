@@ -19,7 +19,7 @@ class Window(tk.Tk):
             -90, -90, anchor=tk.NW, image=self.tkImage)  # self.tkImage要加self否則圖片會消失
         mainCanvas.pack(fill=tk.BOTH, expand=True)
         # ---------建立背景end-------
-        title_Label = tk.Label(mainCanvas, text="台灣彩卷最新開彩結果", fg="#f17432", font=(
+        title_Label = tk.Label(mainCanvas, text="台灣彩卷最新開彩結果", fg="#f17432",bg="white", font=(
             "Arial", 20)).pack(padx=30, pady=30)  # 設定標籤文字的大小 字型 間距
 
         
