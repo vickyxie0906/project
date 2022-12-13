@@ -11,12 +11,12 @@ class Window(tk.Tk):
     def __init__(self, lottery_name):  
         super().__init__()  
         # ---------建立背景-------
-        bgImage = Image.open("bg1.jpg")
+        bgImage = Image.open("lotto.jpg")
         self.tkImage = ImageTk.PhotoImage(bgImage)
 
         mainCanvas = tk.Canvas(self)
         mainCanvas.create_image(
-            0, 0, anchor=tk.NW, image=self.tkImage)  # self.tkImage要加self否則圖片會消失
+            -90, -90, anchor=tk.NW, image=self.tkImage)  # self.tkImage要加self否則圖片會消失
         mainCanvas.pack(fill=tk.BOTH, expand=True)
         # ---------建立背景end-------
         title_Label = tk.Label(mainCanvas, text="台灣彩卷最新開彩結果", fg="#f17432", font=(
