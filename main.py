@@ -8,7 +8,7 @@ class Window(tk.Tk):
     def __init__(self, lottery_name):  
         super().__init__()  
         title_Label = tk.Label(self, text="台灣彩卷最新開彩結果", fg="#f17432", font=(
-            "Arial", 20)).pack(padx=30, pady=20)  # 設定標籤文字的大小 字型 間距
+            "Arial", 20)).pack(padx=30, pady=30)  # 設定標籤文字的大小 字型 間距
 
         buttons_frame = tk.Frame(self) 
         buttons_frame.pack(padx=50, pady=(0, 30))
@@ -21,10 +21,11 @@ class Window(tk.Tk):
         for index, lname in enumerate(lottery_name.items()):
          
             cname, ename = lname 
-            btn = tk.Button(buttons_frame, text=f"{cname}", bg="#f1e767", font=(
-                "Arial", 15,"bold"), width=8, padx=20, pady=3)
+            btn = tk.Button(buttons_frame, text=f"{cname}", bg="#f1e767", bd=4, font=(
+                "Arial", 15, "bold"), width=8, padx=20, pady=3, activeforeground="#f1e767")
+            
             btn.grid(row=index % grid_row_nums, column=index //
-                     grid_row_nums, padx=5, pady=5)
+                     grid_row_nums, padx=4, pady=4)
             btn.bind("<Button>", self.button_click)
 
     def button_click(self, event):
