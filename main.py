@@ -58,12 +58,13 @@ class Window(tk.Tk):
         self.displayFrame = ttk.LabelFrame(
             self,  text=cname, borderwidth=2, relief=tk.GROOVE)  # 建立顯示資料的框架 relief按鈕邊框樣式
         self.displayFrame.pack(fill=tk.BOTH, padx=50, pady=(0, 30))  # 把寬高填滿
+        tk.Label(self.displayFrame, text=ds.威力彩).pack(padx=10)
 
 
-class DisplayFrame(ttk.LabelFrame):  # 繼承ttk.LabelFrame父類別
+# class DisplayFrame(ttk.LabelFrame):  # 繼承ttk.LabelFrame父類別
 
-    def __init__(self, parent, data=None, **kwargs):  # **kwargs是打包上面DisplayFrame()裡text之後的內容
-        super().__init__(parent, **kwargs)
+#     def __init__(self, parent, data=None, **kwargs):  # **kwargs是打包上面DisplayFrame()裡text之後的內容
+#         super().__init__(parent, **kwargs)
 
 
 def main():
