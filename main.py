@@ -1,22 +1,33 @@
-import datasource as ds  # 載入datasource 縮寫ds
-import tkinter as tk  # 引入tkinter縮寫tk
+import datasource as ds  
+import tkinter as tk 
+from PIL import Image, ImageTk
 from tkinter import ttk, messagebox
 import requests
+# pip install pyinstaller 下載打包專案
+# pyinstaller -F .\main.py -n Taiwan_Lottery -i ./winner.ico 打包專案
 
 
 class Window(tk.Tk):
     def __init__(self, lottery_name):  
         super().__init__()  
-        title_Label = tk.Label(self, text="台灣彩卷最新開彩結果", fg="#f17432", font=(
+        # ---------建立背景-------
+        bgImage = Image.open("bg1.jpg")
+        self.tkImage = ImageTk.PhotoImage(bgImage)
+
+        mainCanvas = tk.Canvas(self)
+        mainCanvas.create_image(
+            0, 0, anchor=tk.NW, image=self.tkImage)  # self.tkImage要加self否則圖片會消失
+        mainCanvas.pack(fill=tk.BOTH, expand=True)
+        # ---------建立背景end-------
+        title_Label = tk.Label(mainCanvas, text="台灣彩卷最新開彩結果", fg="#f17432", font=(
             "Arial", 20)).pack(padx=30, pady=30)  # 設定標籤文字的大小 字型 間距
 
-        buttons_frame = tk.Frame(self) 
-        buttons_frame.pack(padx=50, pady=(0, 30))
+        
 
         # 建立存放按鈕的容器
-        buttons_frame = tk.Frame(self) 
+        buttons_frame = tk.Frame(mainCanvas)
         buttons_frame.pack(padx=50, pady=(0, 30)) 
-        grid_row_nums = 2
+        grid_row_nums = 5
        
         for index, lname in enumerate(lottery_name.items()):
          
@@ -57,7 +68,9 @@ class Window(tk.Tk):
 def main():
     window = Window(ds.lottery_name)
     window.title("台灣彩卷")
+    window.resizable(0, 0)
     window.mainloop()
+
 
 
 if __name__ == "__main__":  

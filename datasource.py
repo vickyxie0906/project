@@ -23,8 +23,10 @@ def get_data(lottery):
         賓果賓果 += "開出獎號 : "
 
         for index in range(0, 20):
-
             賓果賓果 += f"{ball[index].text}"
+            if index==9:
+               賓果賓果 +="\n                   "
+                
 
         賓果賓果 += f"\n超級號 :{bsObj.find('div',{'id':'rightdown'}).findAll('div',class_='ball_red')[0].text}\n"
         賓果賓果 += f"猜大小 :{bsObj.find('div',{'id':'rightdown'}).findAll('div',class_='ball_blue_BB1')[0].text}\n"
