@@ -3,6 +3,9 @@ import tkinter as tk
 from PIL import Image, ImageTk
 from tkinter import ttk, messagebox
 import requests
+import base64
+from io import BytesIO
+from lotto_png import *
 
 
 
@@ -10,7 +13,7 @@ class Window(tk.Tk):
     def __init__(self, lottery_name):  
         super().__init__()  
         
-        bgImage = Image.open("lotto.png")
+        bgImage = Image.open(BytesIO(base64.b64decode(img)))
         self.tkImage = ImageTk.PhotoImage(bgImage)
         mainCanvas = tk.Canvas(self)
         mainCanvas.create_image(
